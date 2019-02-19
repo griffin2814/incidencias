@@ -21,5 +21,9 @@ class InitialSeed extends Seeder
                 'user_id' => $user->id
             ]));
         });
+        factory(User::class)->create([
+            'name' => 'Darwin Salinas',
+            'email' => 'salinash2000@gmail.com'
+        ]);
     }
 }
