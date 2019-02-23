@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,24 +13,4 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
-Route::get('about', function () {
-    $empresa = "miskilingo" ;
-    return view('about', ['empresa' => $empresa]);
-});
-
-Route::get('principal', function () {
-    return view('principal');
-});
-
-Route::get('contacto', function () {
-    return view('contacto');
-});
-
-Route::get('informacion', function () {
-    return view('informacion');
-});
-
-Route::get('referencia', function () {
-    return view('referencia');
 });
