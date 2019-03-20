@@ -13,8 +13,11 @@ class CargoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+
     {
-        //
+        $qs = Cargo::all();
+
+    return $qs;
     }
 
     /**
@@ -22,9 +25,12 @@ class CargoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $cargo = new  Cargo();
+        $cargo->cargo = $request['cargo'];
+        $cargo->save();
+        return redirect('cargos/list');
     }
 
     /**
@@ -35,7 +41,10 @@ class CargoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cargo = new  Cargo();
+        $cargo->cargo = $request['cargo'];
+        $cargo->save();
+        return $cargo;
     }
 
     /**
@@ -44,9 +53,10 @@ class CargoController extends Controller
      * @param  \App\Cargo  $cargo
      * @return \Illuminate\Http\Response
      */
-    public function show(Cargo $cargo)
+    public function show(Cargo $cargo, $id)
     {
-        //
+        $registroEncontrado = Cargo::find($id);
+        return $registroEncontrado;
     }
 
     /**
@@ -57,7 +67,7 @@ class CargoController extends Controller
      */
     public function edit(Cargo $cargo)
     {
-        //
+        return view('cargos/editar', ['cargo' => $cargo]);
     }
 
     /**
@@ -69,8 +79,11 @@ class CargoController extends Controller
      */
     public function update(Request $request, Cargo $cargo)
     {
-        //
+        $cargo->cargo = $request['cargo'];
+        $cargo->save();
+        return redirect('cargos/list');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -80,6 +93,14 @@ class CargoController extends Controller
      */
     public function destroy(Cargo $cargo)
     {
-        //
+        $cargo->delete();
+        return redirect('cargos/list');
     }
+
+    public function list()
+    {
+        $rs = $this->index();
+        return view('cargos/lista', ['rs' => $rs]);
+    }
+
 }

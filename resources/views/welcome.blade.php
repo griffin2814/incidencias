@@ -1,13 +1,19 @@
+@extends('layouts.app')
+
+@section('content')
+
+@endsection
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>SDI</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Margarine" rel="stylesheet">
 
         <!-- Styles -->
         <style>
@@ -19,35 +25,28 @@
                 height: 100vh;
                 margin: 0;
             }
-
             .full-height {
                 height: 100vh;
             }
-
             .flex-center {
                 align-items: center;
                 display: flex;
                 justify-content: center;
             }
-
             .position-ref {
                 position: relative;
             }
-
             .top-right {
                 position: absolute;
                 right: 10px;
                 top: 18px;
             }
-
             .content {
                 text-align: center;
             }
-
             .title {
                 font-size: 84px;
             }
-
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -57,10 +56,10 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
-
             .m-b-md {
                 margin-bottom: 30px;
             }
+
         </style>
     </head>
     <body>
@@ -81,15 +80,18 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                  Sistema De Incidencias
                 </div>
 
+               <!-- <img src="{{asset('asset/SDI.jpg')}}"> -->
+                <!-- <img src="asset/SDI.jpg" class="rounded mx-auto d-block" alt="Responsive image"> -->
+
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
+                    <a href="entidades/list">Entidades</a>
+                    <a href="cargos/list">Cargos</a>
+                    <a href="modulos/list">Módulos</a>
+                    <a href="sexos/list">Sexos</a>
+                    <a href="tipoIncidencias/list">Tipo de Incidencias</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
@@ -97,3 +99,4 @@
         </div>
     </body>
 </html>
+
