@@ -14,7 +14,9 @@ class IncidenciaController extends Controller
      */
     public function index()
     {
-        //
+        $qs = Incidencia::all();
+
+        return $qs;
     }
 
     /**
@@ -24,7 +26,7 @@ class IncidenciaController extends Controller
      */
     public function create()
     {
-        //
+        return redirect('incidencias/list');
     }
 
     /**
@@ -35,7 +37,14 @@ class IncidenciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $incidencia = new  Incidencia();
+        $incidencia->titulo = $request['titulo'];
+        $incidencia->descripcion = $request['descripcion'];
+        $incidencia->modulo_id = $request['modulo_id'];
+        $incidencia->tipo_incidencia_id = $request['tipo_incidencia_id'];
+        $incidencia->user_id = $request['user_id'];
+        $incidencia->save();
+        return $incidencia;
     }
 
     /**
@@ -44,9 +53,10 @@ class IncidenciaController extends Controller
      * @param  \App\Incidencia  $incidencia
      * @return \Illuminate\Http\Response
      */
-    public function show(Incidencia $incidencia)
+    public function show(Incidencia $incidencia, $id)
     {
-        //
+        $registroEncontrado = Incidencia::find($id);
+        return $registroEncontrado;
     }
 
     /**
@@ -57,7 +67,7 @@ class IncidenciaController extends Controller
      */
     public function edit(Incidencia $incidencia)
     {
-        //
+        return view('incidencias/editar', ['incidencia' => $incidencia]);
     }
 
     /**
@@ -69,7 +79,13 @@ class IncidenciaController extends Controller
      */
     public function update(Request $request, Incidencia $incidencia)
     {
-        //
+        $incidencia->titulo = $request['titulo'];
+        $incidencia->descripcion = $request['descripcion'];
+        $incidencia->modulo_id = $request['modulo_id'];
+        $incidencia->tipo_incidencia_id = $request['tipo_incidencia_id'];
+        $incidencia->user_id = $request['user_id'];
+        $incidencia->save();
+        return redirect('incidencias/list');
     }
 
     /**
@@ -80,6 +96,14 @@ class IncidenciaController extends Controller
      */
     public function destroy(Incidencia $incidencia)
     {
-        //
+        $incidencia->delete();
+        return redirect('incidencias/list');
     }
+
+    public function list()
+    {
+        $rs = $this->index();
+        return view('incidencias/lista', ['rs' => $rs]);
+    }
+
 }

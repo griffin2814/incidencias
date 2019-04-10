@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Tipo_incidencia;
+use App\User;
 use Illuminate\Http\Request;
 
-class Tipo_incidenciaController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class Tipo_incidenciaController extends Controller
      */
     public function index()
     {
-        $qs = Tipo_incidencia::all();
+        $qs = User::all();
 
         return $qs;
     }
@@ -24,12 +24,9 @@ class Tipo_incidenciaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $tipo = new  Tipo_incidencia();
-        $tipo->tipo = $request['tipo'];
-        $tipo->save();
-        return redirect('tipo_incidencias/list');
+        return redirect('users/list');
     }
 
     /**
@@ -40,65 +37,71 @@ class Tipo_incidenciaController extends Controller
      */
     public function store(Request $request)
     {
-        $tipo = new  Tipo_incidencia();
-        $tipo->tipo = $request['tipo'];
-        $tipo->save();
-        return $tipo;
+        $user = new  User();
+        $user->name = $request['name'];
+        $user->email = $request['email'];
+        $user->password = $request['password'];
+        $user->save();
+        return $user;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Tipo_incidencia  $tipo
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Tipo_incidencia $tipo, $id)
+    public function show(User $user, $id)
     {
-        $registroEncontrado = Tipo_incidencia::find($id);
+        $registroEncontrado = User::find($id);
         return $registroEncontrado;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Tipo_incidencia  $tipo
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tipo_incidencia $tipo)
+    public function edit(User $user)
     {
-        return view('tipo_incidencias/editar', ['tipo' => $tipo]);
+        return view('users/editar', ['user' => $user]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tipo_incidencia  $tipo
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tipo_incidencia $tipo)
+    public function update(Request $request, User  $user)
     {
-        $tipo->tipo = $request['tipo'];
-        $tipo->save();
-        return redirect('tipo_incidencias/list');
+        $user->titulo = $request['titulo'];
+        $user->descripcion = $request['descripcion'];
+        $user->modulo_id = $request['modulo_id'];
+        $user->tipo_incidencia_id = $request['tipo_incidencia_id'];
+        $user->user_id = $request['user_id'];
+        $user->save();
+        return redirect('users/list');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Tipo_incidencia  $tipo
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tipo_incidencia $tipo)
+    public function destroy(User $user)
     {
-        $tipo->delete();
-        return redirect('tipo_incidencias/list');
+        $user->delete();
+        return redirect('users/list');
     }
-
 
     public function list()
     {
         $rs = $this->index();
-        return view('tipo_incidencias/lista', ['rs' => $rs]);
+        return view('users/lista', ['rs' => $rs]);
     }
+
 }

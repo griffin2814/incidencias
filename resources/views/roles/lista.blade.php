@@ -8,12 +8,13 @@
 
 <a href="{{ url('') }}" type="button" class="btn btn-warning">Regresar</a>
     <div class="card-header bg-info">
-    Lista de tipo de incidencia
+    Lista de Roles
   </div>
     <table class="table table-bordered" id="laravel_crud">
         <thead>
             <tr>
-                <th>Tipo de incidencia</th>
+                <th>Nombres</th>
+                <th>guard_name</th>
                 <th>Fecha creada</th>
                 <th>Fecha actualizado</th>
                <th colspan="2"> <center>Opciones </center></th>
@@ -22,13 +23,14 @@
         <tbody>
             @foreach ($rs as $item)
         <tr>
-            <td>{{$item->tipo}}</td>
+            <td>{{$item->name}}</td>
+            <td>{{$item->guard_name}}</td>
             <td>{{$item->created_at}}</td>
             <td>{{$item->updated_at}}</td>
                 <td>
-                <a href="/tipoIncidencias/create" class="btn btn-success">Agregar</a>
-                <a href="/tipoIncidencias/edit/{{$item->id}}" class="btn btn-primary">Editar</a>
-                <form action="{{url('tipoIncidencias', $item->id)}}" method="POST" role="form" id="delete_form_{{$item->id}}">
+                <a href="/roles/create" class="btn btn-success">Agregar</a>
+                <a href="/roles/edit/{{$item->id}}" class="btn btn-primary">Editar</a>
+                <form action="{{url('roles', $item->id)}}" method="POST" role="form" id="delete_form_{{$item->id}}">
                </td>
                <td>
                 @csrf()

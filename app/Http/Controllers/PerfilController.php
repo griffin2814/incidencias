@@ -14,7 +14,9 @@ class PerfilController extends Controller
      */
     public function index()
     {
-        //
+        $qs = Perfil::all();
+
+        return $qs;
     }
 
     /**
@@ -22,9 +24,9 @@ class PerfilController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return redirect('perfiles/list');
     }
 
     /**
@@ -35,7 +37,15 @@ class PerfilController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $perfil = new  Perfil();
+        $perfil->nombres = $request['nombres'];
+        $perfil->apellidos = $request['apellidos'];
+        $perfil->sexo_id = $request['sexo_id'];
+        $perfil->cargo_id = $request['cargo_id'];
+        $perfil->entidad_id = $request['entidad_id'];
+        $perfil->user_id = $request['user_id'];
+        $perfil->save();
+        return $perfil;
     }
 
     /**
@@ -44,9 +54,10 @@ class PerfilController extends Controller
      * @param  \App\Perfil  $perfil
      * @return \Illuminate\Http\Response
      */
-    public function show(Perfil $perfil)
+    public function show(Perfil $perfil, $id)
     {
-        //
+        $registroEncontrado = Perfil::find($id);
+        return $registroEncontrado;
     }
 
     /**
@@ -57,7 +68,7 @@ class PerfilController extends Controller
      */
     public function edit(Perfil $perfil)
     {
-        //
+        return view('perfiles/editar', ['perfil' => $perfil]);
     }
 
     /**
@@ -69,7 +80,14 @@ class PerfilController extends Controller
      */
     public function update(Request $request, Perfil $perfil)
     {
-        //
+        $perfil->nombres = $request['nombres'];
+        $perfil->apellidos = $request['apellidos'];
+        $perfil->sexo_id = $request['sexo_id'];
+        $perfil->cargo_id = $request['cargo_id'];
+        $perfil->entidad_id = $request['entidad_id'];
+        $perfil->user_id = $request['user_id'];
+        $perfil->save();
+        return redirect('perfiles/list');
     }
 
     /**
@@ -80,6 +98,14 @@ class PerfilController extends Controller
      */
     public function destroy(Perfil $perfil)
     {
-        //
+        $perfil->delete();
+        return redirect('perfiles/list');
     }
+
+    public function list()
+    {
+        $rs = $this->index();
+        return view('perfiles/lista', ['rs' => $rs]);
+    }
+
 }

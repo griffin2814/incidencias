@@ -1,5 +1,7 @@
 <?php
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,13 +13,14 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
 
-
+alert()->success('Success Message', 'Optional Title');
 
 
 Route::get('cargos/edit/{cargo}', 'CargoController@edit');
@@ -72,15 +75,77 @@ Route::patch('sexos/{sexo}', 'SexoController@update');
 Route::post('sexos/{sexo}', 'SexoController@create');
 Route::delete('sexos/{sexo}', 'SexoController@destroy');
 
-Route::get('tipoIncidencias/edit/{tipo}', 'TipoIncidenciaController@edit');
-Route::get('tipoIncidencias/list', 'TipoIncidenciaController@list');
-Route::get('tipoIncidencias/create', function () {
-    return view('tipoIncidencias/create');
+Route::get('tipo_incidencias/edit/{tipo}', 'Tipo_incidenciaController@edit');
+Route::get('tipo_incidencias/list', 'Tipo_incidenciaController@list');
+Route::get('tipo_incidencias/create', function () {
+    return view('tipo_incidencias/create');
 });
 
-Route::get('tipoIncidencias', 'TipoIncidenciaController@index');
-Route::get('tipoIncidencias/{tipo}', 'TipoIncidenciaController@show');
-Route::post('tipoIncidencias', 'TipoIncidenciaController@store');
-Route::patch('tipoIncidencias/{tipo}', 'TipoIncidenciaController@update');
-Route::post('tipoIncidencias/{tipo}', 'TipoIncidenciaController@create');
-Route::delete('tipoIncidencias/{tipo}', 'TipoIncidenciaController@destroy');
+Route::get('tipo_incidencias', 'Tipo_incidenciaController@index');
+Route::get('tipo_incidencias/{tipo}', 'Tipo_incidenciaController@show');
+Route::post('tipo_incidencias', 'Tipo_incidenciaController@store');
+Route::patch('tipo_incidencias/{tipo}', 'Tipo_incidenciaController@update');
+Route::post('tipo_incidencias/{tipo}', 'Tipo_incidenciaController@create');
+Route::delete('tipo_incidencias/{tipo}', 'Tipo_incidenciaController@destroy');
+
+
+
+Route::get('perfiles', 'PerfilController@index');
+Route::get('perfiles/{}', 'PerfilController@show');
+Route::get('perfiles/edit/{perfiles}', 'PerfilController@edit');
+Route::post('perfiles', 'PerfilController@store');
+Route::patch('perfiles/{perfiles}', 'PerfilController@update');
+Route::post('perfiles/{perfiles}', 'PerfilController@create');
+Route::delete('perfiles/{perfiles}', 'PerfilController@destroy');
+
+
+Route::get('perfiles/list', 'PerfilController@list');
+Route::get('perfiles/create', function () {
+    return view('perfiles/create');
+});
+
+
+Route::get('incidencias', 'IncidenciaController@index');
+Route::get('incidencias/{}', 'IncidenciaController@show');
+Route::get('incidencias/edit/{incidencias}', 'IncidenciaController@edit');
+Route::post('incidencias', 'IncidenciaController@store');
+Route::patch('incidencias/{incidencias}', 'IncidenciaController@update');
+Route::post('incidencias/{incidencias}', 'IncidenciaController@create');
+Route::delete('incidencias/{incidencias}', 'IncidenciaController@destroy');
+
+
+Route::get('incidencias/list', 'IncidenciaController@list');
+Route::get('incidencias/create', function () {
+    return view('incidencias/create');
+});
+
+
+Route::get('users', 'UserController@index');
+Route::get('users/{}', 'UserController@show');
+Route::get('users/edit/{users}', 'UserController@edit');
+Route::post('users', 'UserController@store');
+Route::patch('users/{users}', 'UserController@update');
+Route::post('users/{users}', 'UserController@create');
+Route::delete('users/{users}', 'UserController@destroy');
+
+
+Route::get('users/list', 'UserController@list');
+Route::get('users/create', function () {
+    return view('users/create');
+});
+
+
+Route::get('roles', 'RolController@index');
+Route::get('roles/{}', 'RolController@show');
+Route::get('roles/edit/{roles}', 'RolController@edit');
+Route::post('roles', 'RolController@store');
+Route::patch('roles/{roles}', 'RolController@update');
+Route::post('roles/{roles}', 'RolController@create');
+Route::delete('roles/{roles}', 'RolController@destroy');
+
+
+Route::get('roles/list', 'RolController@list');
+Route::get('roles/create', function () {
+    return view('roles/create');
+});
+

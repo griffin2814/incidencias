@@ -91,9 +91,10 @@
                     <a href="cargos/list">Cargos</a>
                     <a href="modulos/list">Módulos</a>
                     <a href="sexos/list">Sexos</a>
-                    <a href="tipoIncidencias/list">Tipo de Incidencias</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="tipo_incidencias/list">Tipo de Incidencias</a>
+                    <a href="perfiles/list">Perfiles</a>
+                    <a href="users/list">Users</a>
+                    <a href="incidencias/list">Incidencias</a>
                 </div>
             </div>
         </div>
